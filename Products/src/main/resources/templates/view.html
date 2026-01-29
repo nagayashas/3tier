@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div align="center">
+		<table border=1>
+			<tr>
+				<th>Name</th>
+				<th>Cost</th>
+				<th>Image Link</th>
+				<th>Description</th>
+				<th>Manage</th>
+			</tr>
+			  <tr th:each="product:${list}">
+					<td th:text="${product.name}"> </td>
+					<td th:text="${product.cost}"> </td>
+					<td><img height=100px width=100px th:src="${product.imgLink}"></td>					
+					<td th:text="${product.description}"> </td>
+					
+					<td><a th:href="'edit?id='+${product.id}"><button>Edit Products</button></a> <br> <br>
+					<a th:href="'delete?id='+${product.id}"><button>Delete Products</button></a> <br></td>
+					
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>

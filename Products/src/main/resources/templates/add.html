@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div align="center">
+		<h1>Add products</h1>
+		<form action="/add" method="post">
+			Name : <input type="text" name ="name" placeholder="Enter the product name"> <br><br>
+			Cost : <input type="number" name ="cost" placeholder="Enter the  cost"><br><br>
+			Image Link : <input type="text" name ="imgLink" placeholder="Enter product image link"><br><br>
+			Description : <input type="text" name ="description" placeholder="Enter product image link"><br><br>
+			<button>Add Products</button>		
+		</form>
+	</div>
+	<script th:if="${message}">
+		alert("[[${message}]]")
+	</script>
+</body>
+</html>
+

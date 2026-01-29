@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div align="center">
+		<h1>Add movies</h1>
+		<form action="/add" method="post">
+		<input type="hidden" name = "id" th:value="${values.id}">
+			Name : <input type="text" name ="name"  th:value="${values.name}"> <br><br>
+			Cost : <input type="number" name ="cost"  th:value="${values.cost}"><br><br>
+			Image Link : <input type="text" name ="imgLink" th:value="${values.imgLink}"><br><br>
+			Description : <input type="text" name ="description" th:value="${values.description}"><br><br>
+			<button>Add Products</button>		
+		</form>
+	</div>
+
+</body>
+</html>
