@@ -2,7 +2,82 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>VIEW</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+
+    div[align="center"] {
+        background: #ffffff;
+        padding: 30px 40px;
+        border-radius: 12px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        width: 90%;
+        max-width: 1100px;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+    }
+
+    th {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: #ffffff;
+        padding: 12px;
+        text-align: center;
+        letter-spacing: 0.5px;
+    }
+
+    td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #e0e0e0;
+        color: #333333;
+    }
+
+    tr:hover {
+        background-color: #f4f6ff;
+    }
+
+    img {
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    button {
+        width: 140px;
+        padding: 8px 10px;
+        font-size: 14px;
+        font-weight: 600;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: #ffffff;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        opacity: 0.95;
+    }
+</style>
 </head>
 <body>
 	<div align="center">
@@ -20,9 +95,10 @@
 					<td><img height=100px width=100px th:src="${product.imgLink}"></td>					
 					<td th:text="${product.description}"> </td>
 					
-					<td><a th:href="'edit?id='+${product.id}"><button>Edit Products</button></a> <br> <br>
-					<a th:href="'delete?id='+${product.id}"><button>Delete Products</button></a> <br></td>
-					
+					<td>
+						<a th:href="'edit?id='+${product.id}"><button>Edit Products</button></a> <br> <br>
+						<a th:href="'delete?id='+${product.id}"><button>Delete Products</button></a> <br>
+					</td>
 			</tr>
 		</table>
 	</div>
