@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: products-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: databaseForProducts
+    volumes:
+      - ./mysql-data:/var/lib/mysql   # Bind mount to host folder
+    networks:
+      - appbridge
+    healthcheck:
+      test: ["CMD","mysqladmin","ping","-h","localhost","-uroot","-p1234"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    restart: always
+
+  product:
+    container_name: products
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      SPRING_APPLICATION_NAME: Products
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/databaseForProducts?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 1234
+    ports:
+      - "8080:8085"
+    networks:
+      - appbridge
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: always
+
+networks:
+  appbridge:
